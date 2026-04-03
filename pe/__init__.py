@@ -1269,8 +1269,8 @@ class _Header:
         (port, data_kind, pid, call_from, call_to, data_len) = struct.unpack(
             _HDR_FMT, bytes)
         data_kind = chr(data_kind)
-        call_from = call_from.decode('utf-8', 'replace').rstrip('\0')
-        call_to = call_to.decode('utf-8', 'replace').rstrip('\0')
+        call_from = call_from.decode('utf-8', 'replace').split('\0')[0]
+        call_to = call_to.decode('utf-8', 'replace').split('\0')[0]
         return cls(port, data_kind, pid, call_from, call_to, data_len)
 
 
